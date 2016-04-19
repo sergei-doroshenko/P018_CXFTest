@@ -21,7 +21,7 @@
     <build>
 
         <!--Directory where the source code is located-->
-        <sourceDirectory>src</sourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <resources>
             <resource>
                 <!-- Include properties and xml file from src folder-->
@@ -54,6 +54,28 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <!--<plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>org.sergei.order.Server</mainClass>
+                    <executable>java</executable>
+                    <additionalClasspathElements>
+                        <classpathElement>org.apache.cxf:cxf-rt-frontend-jaxws</classpathElement>
+                        <classpathElement>org.apache.cxf:cxf-rt-transports-http</classpathElement>
+                    </additionalClasspathElements>
+                </configuration>
+            </plugin>-->
+
         </plugins>
         <finalName>orderapp</finalName>
     </build>
