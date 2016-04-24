@@ -2,8 +2,6 @@ package org.sergei.order;
 
 import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
 
-import javax.xml.ws.Endpoint;
-
 /**
  * Created by Sergei_Doroshenko on 4/19/2016.
  */
