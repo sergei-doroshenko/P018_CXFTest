@@ -20,6 +20,7 @@ import javax.ws.rs.core.Response.Status;
 
 @Path("/categoryservice")
 @Produces({"application/json","application/xml"})
+// This changes from master
 public class CategoryService {
 
 	private CategoryDAO categoryDAO = new CategoryDAO();
