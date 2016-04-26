@@ -1,4 +1,5 @@
 /orderapp/orderapp.iml
+/orderapp/build/*
 *.iml
 /.idea
 *.class
