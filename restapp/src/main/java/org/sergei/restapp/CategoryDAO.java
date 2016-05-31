@@ -5,14 +5,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-/*
- * DataAcess object for performing CRUD operations.
- * Dummy implementation.
- */
+
 public class CategoryDAO {
 
-	private static Map<String, Category> categoryMap = new HashMap<String, Category>();
-	private static Map<String, Collection<Book>> bookMap = new HashMap<String, Collection<Book>>();
+	private static Map<String, Category> categoryMap = new HashMap<>();
+	private static Map<String, Collection<Book>> bookMap = new HashMap<>();
 
 	static {
 
@@ -40,42 +37,41 @@ public class CategoryDAO {
 		bookMap.put(category1.getCategoryId(), booksList);
 	}
 
-	public void addCategory(Category category) {
+	public void addCategory(Category category)
+	{
 		categoryMap.put(category.getCategoryId(), category);
-
 	}
 
-	public void addBook(Category category) {
+	public void addBook(Category category)
+	{
 		bookMap.put(category.getCategoryId(), category.getBooks());
-
 	}
 
-	public Collection<Book> getBooks(String categoryId) {
+	public Collection<Book> getBooks(String categoryId)
+	{
 		return bookMap.get(categoryId);
-
 	}
 
-	public Category getCategory(String id) {
+	public Category getCategory(String id)
+	{
 		Category cat = null;
-		//Dummy implementation to return a new copy of category to 
-      //avoid getting overridden by service
-		if(categoryMap.get(id) != null) {
-		cat = new Category();
-		cat.setCategoryId(categoryMap.get(id).getCategoryId());
-		cat.setCategoryName(categoryMap.get(id).getCategoryName());
+
+		if( categoryMap.get(id) != null ) {
+			cat = new Category();
+			cat.setCategoryId(categoryMap.get(id).getCategoryId());
+			cat.setCategoryName(categoryMap.get(id).getCategoryName());
 		}
 		return cat;
     }
 
-	public void deleteCategory(String id) {
+	public void deleteCategory(String id)
+	{
 		categoryMap.remove(id);
-		// Remove association of books
 		bookMap.remove(id);
 	}
 
-	public void updateCategory(Category category) {
+	public void updateCategory(Category category)
+	{
 		categoryMap.put(category.getCategoryId(), category);
-
 	}
-
 }

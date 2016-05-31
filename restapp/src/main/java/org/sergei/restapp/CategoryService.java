@@ -1,6 +1,5 @@
 package org.sergei.restapp;
 
-//JAX-RS Imports
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -14,31 +13,27 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.Response.Status;
 
-/*
- * CategoryService class - Add/Removes category for books 
- */
-
 @Path("/categoryservice")
 @Produces({"application/json","application/xml"})
-// this comment from brand sd_NEW_1
-// This changes from master
-public class CategoryService {
-
+public class CategoryService
+{
 	private CategoryDAO categoryDAO = new CategoryDAO();
 
-	public CategoryDAO getCategoryDAO() {
+	public CategoryDAO getCategoryDAO()
+	{
 		return categoryDAO;
 	}
 
-	public void setCategoryDAO(CategoryDAO categoryDAO) {
+	public void setCategoryDAO(CategoryDAO categoryDAO)
+	{
 		this.categoryDAO = categoryDAO;
 	}
 
 	@GET
 	@Path("/category/{id}")
 	@Produces({"application/json","application/xml"})
-	public Category getCategory(@PathParam("id") String id) {
-
+	public Category getCategory(@PathParam("id") String id)
+	{
 		System.out.println("getCategory called with category id: " + id);
 
 		Category cat = getCategoryDAO().getCategory(id);
@@ -55,8 +50,8 @@ public class CategoryService {
 	@POST
 	@Path("/category")
 	@Consumes({"application/json","application/xml"})
-	public Response addCategory(Category category) {
-
+	public Response addCategory(Category category)
+	{
 		System.out.println("addCategory called");
 
 		Category cat = getCategoryDAO().getCategory( category.getCategoryId() );
@@ -67,14 +62,13 @@ public class CategoryService {
 			getCategoryDAO().addCategory(category);
 			return Response.ok(category).build();
 		}
-
 	}
 
 	@DELETE
 	@Path("/category/{id}")
 	@Consumes({"application/json","application/xml"})
-	public Response deleteCategory(@PathParam("id") String id) {
-
+	public Response deleteCategory(@PathParam("id") String id)
+	{
 		System.out.println("deleteCategory with category id : " + id);
 
 		Category cat = getCategoryDAO().getCategory(id);
@@ -89,10 +83,9 @@ public class CategoryService {
 	@PUT
 	@Path("/category")
 	@Consumes({"application/json","application/xml"})
-	public Response updateCategory(Category category) {
-
-		System.out.println("updateCategory with category id : "
-				+ category.getCategoryId());
+	public Response updateCategory(Category category)
+	{
+		System.out.println("updateCategory with category id : " + category.getCategoryId());
 
 		Category cat = getCategoryDAO().getCategory( category.getCategoryId() );
 		if (cat == null) {
@@ -106,10 +99,9 @@ public class CategoryService {
 	@POST
 	@Path("/category/book")
 	@Consumes({"application/json","application/xml"})
-	public Response addBooks(Category category) {
-
-		System.out.println("addBooks with category id : "
-				+ category.getCategoryId());
+	public Response addBooks(Category category)
+	{
+		System.out.println("addBooks with category id : " + category.getCategoryId());
 
 		Category cat = getCategoryDAO().getCategory( category.getCategoryId() );
 		if (cat == null) {
@@ -123,8 +115,8 @@ public class CategoryService {
 	@GET
 	@Path("/category/{id}/books")
 	@Consumes("application/xml,application/json")
-	public Response getBooks(@PathParam("id") String id) {
-
+	public Response getBooks(@PathParam("id") String id)
+	{
 		System.out.println("getBooks called with category id : " + id);
 
 		Category cat = getCategoryDAO().getCategory(id);
@@ -134,7 +126,6 @@ public class CategoryService {
 		} else {
 			cat.setBooks(getCategoryDAO().getBooks(id));
 			return Response.ok(cat).build();
-
 		}
 	}
 
